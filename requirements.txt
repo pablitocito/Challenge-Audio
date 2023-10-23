@@ -1,0 +1,7 @@
+librosa
+pandas
+numpy
+ipykernel
+torch
+torchvision
+torchaudio 
