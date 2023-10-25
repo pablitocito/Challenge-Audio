@@ -6,3 +6,4 @@ torch
 torchvision
 torchaudio 
 torch-summary == 1.4.5
+tqdm == 4.66.1
