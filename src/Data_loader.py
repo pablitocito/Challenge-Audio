@@ -1,13 +1,16 @@
 # Dataloader
+import torch
+import math, random
 from torch.utils.data import DataLoader, Dataset, random_split
 from Utils import AudioUtil
+import pandas as pd
 
 class SoundDS(Dataset):
 
-  def __init__(self, df):
+  def __init__(self, df : pd.DataFrame, duration : int = 10000):
 
     self.df = df
-    self.duration = 10000 # Hyper-parametrisation
+    self.duration = duration  # Hyper-parametrisation
     self.sr = 44100 # Hyper-parametrisation
     self.channel = 2
     self.shift_pct = 0.4
@@ -70,4 +73,17 @@ class SoundDS(Dataset):
 
 
 if __name__ == '__main__':
+  df_train = pd.read_csv('train_dataset.csv')
+
+  ds_train = SoundDS(df_train)
+  # Create training and validation data loaders
+  train_dl = torch.utils.data.DataLoader(ds_train, batch_size=16, shuffle=True)
+  # Print some data samples from the training data loader
+  print("Training Data Samples:")
+  for batch in train_dl:
+      features, labels = batch  # Assuming your dataset returns (features, labels)
+      print("Labels:", labels)
+      print("Input shape :" ,features.shape )
+      break  # Print only the first batch as an example
+
   
