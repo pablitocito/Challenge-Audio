@@ -14,4 +14,3 @@ You will have access to 1922 audio tracks obtained from the Spotify API spanning
 * Music ID
 * Audio track (in a separate zip file)
 * Path to the mp3 file
-* To adhere to Kaggle challenge norms, you are allowed 10 submissions per day.
